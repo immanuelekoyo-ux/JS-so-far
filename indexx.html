@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classwork — Mini Shop (forEach)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🛒 Mini Shop</h1>
+    <p class="sub">
+      Built with <code>forEach()</code>, <code>createElement()</code>, and <code>append()</code>.
+      Open DevTools (F12) → <strong>Console</strong> to see what's happening as you click.
+    </p>
+  </header>
+
+  <!--
+    This is the empty "shelf". Our JavaScript will loop over the products
+    array and build one product card per item, then append it in here.
+    Right now it's empty on purpose — that's the whole lesson!
+  -->
+  <main id="product-list" class="product-grid">
+    <!-- product cards get inserted here by app.js -->
+  </main>
+
+  <section>
+    <h2 class="cart-heading">Your Cart</h2>
+    <!--
+      Empty on purpose, just like #product-list was. Every time "Add to
+      Cart" is clicked, app.js builds one more card here — using the SAME
+      product-card markup/design as the shelf above.
+    -->
+    <div id="cart-items" class="product-grid"></div>
+  </section>
+
+  <footer>
+    <p>Items in cart: <span id="cart-count">0</span></p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

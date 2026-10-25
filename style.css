@@ -1,0 +1,105 @@
+/* Just enough styling to make the shop look like a shop — nothing fancy. */
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0 1rem 3rem;
+  color: #222;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+}
+
+.sub {
+  color: #555;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+code {
+  background: #eee;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.product-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.product-card .price {
+  color: #2a7a2a;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.product-card button {
+  margin-top: auto;
+  background: #2a6df5;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.product-card button:hover {
+  background: #1c54c9;
+}
+
+.cart-heading {
+  max-width: 900px;
+  margin: 2.5rem auto 0.5rem;
+  padding: 0 0 0.5rem;
+  border-bottom: 2px solid #ddd;
+}
+
+.added-badge {
+  margin-top: auto;
+  padding: 0.6rem;
+  color: #2a7a2a;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+footer {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+#cart-count {
+  font-weight: bold;
+}
