@@ -1,157 +1,185 @@
-/* ============================================================================
- * CLASSWORK — Mini Shop
- * Goal: take an array of products and turn it into real HTML on the page,
- * using forEach() to build one big HTML string, then dropping it in with
- * innerHTML.
- *
- * Everything lives in ONE function for now — renderShop(). Once this makes
- * sense, we'll split it into smaller functions. For today, the goal is just
- * to follow the logic top to bottom.
- *
- * Open index.html in the browser (not with `node`) to see this run.
- * ==========================================================================*/
+const products = [
+  {
+    id: 1,
+    title: "runner sneakers",
+    category: "shoes",
+    price: 59.99,
+    icon: "👟",
+    desc: "Lightweight everyday sneakers with a soft cushioned sole.",
+  },
+  {
+    id: 2,
+    title: "leather boots",
+    category: "shoes",
+    price: 89.99,
+    icon: "🥾",
+    desc: "Durable leather boots built for rain, mud and long walks.",
+  },
+  {
+    id: 3,
+    title: "summer sandals",
+    category: "shoes",
+    price: 24.99,
+    icon: "🩴",
+    desc: "Breathable open sandals, perfect for warm weather.",
+  },
+  {
+    id: 4,
+    title: "city backpack",
+    category: "bags",
+    price: 45.5,
+    icon: "🎒",
+    desc: "Water-resistant backpack with a padded laptop pocket.",
+  },
+  {
+    id: 5,
+    title: "classic handbag",
+    category: "bags",
+    price: 72.0,
+    icon: "👜",
+    desc: "A timeless handbag with room for all your essentials.",
+  },
+  {
+    id: 6,
+    title: "travel suitcase",
+    category: "bags",
+    price: 120.0,
+    icon: "🧳",
+    desc: "Hard-shell suitcase with four smooth-rolling wheels.",
+  },
+  {
+    id: 7,
+    title: "steel watch",
+    category: "watches",
+    price: 149.99,
+    icon: "⌚",
+    desc: "Stainless steel watch with a scratch-resistant face.",
+  },
+  {
+    id: 8,
+    title: "sport watch",
+    category: "watches",
+    price: 79.99,
+    icon: "⏱️",
+    desc: "Shock-proof sport watch with stopwatch and alarm.",
+  },
+  {
+    id: 9,
+    title: "minimal watch",
+    category: "watches",
+    price: 99.0,
+    icon: "🕰️",
+    desc: "A clean, simple design that goes with any outfit.",
+  },
+  {
+    id: 9,
+    title: "minimal watch",
+    category: "cars",
+    price: 99.0,
+    icon: "🕰️",
+    desc: "A clean, simple design that goes with any outfit.",
+  },
+];
 
-function renderShop() {
-
-  /* -------------------------------------------------------------------------
-   * STEP 1 — THE DATA
-   * ---------------------------------------------------------------------
-   * A plain array of objects. Nothing on the page yet — just information
-   * sitting in memory.
-   * ---------------------------------------------------------------------- */
-  const products = [
-    {
-      name: 'Backpack',
-      price: 30,
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop',
-    },
-    {
-      name: 'Sneakers',
-      price: 45,
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop',
-    },
-    {
-      name: 'Headphones',
-      price: 60,
-      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
-    },
-    {
-      name: 'Water Bottle',
-      price: 12,
-      image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=200&h=200&fit=crop',
-    },
-    {
-      name: 'Sunglasses',
-      price: 20,
-      image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=200&h=200&fit=crop',
-    },
-  ];
+window.addEventListener('DOMContentLoaded', () => {
+  displayProductItems(products);
+  displayProductButtons();
+});
 
 
-  /* -------------------------------------------------------------------------
-   * STEP 2 — FIND THE SHELF
-   * ---------------------------------------------------------------------
-   * Grab the empty <main id="product-list"> from index.html — the "shelf"
-   * we're about to fill with HTML.
-   * ---------------------------------------------------------------------- */
-  const productList = document.querySelector('#product-list');
+const sectionMenu = document.querySelector('.products');
+const containerBtn = document.querySelector('.btn-container');
 
+let displayProductButtons = () => {
+  const categories = products.reduce((listOfCategories, currentProductItemWeChecking) => {
+    if (!listOfCategories.includes(currentProductItemWeChecking.category)) { //in plain english, does the list of categories already include the category of the product we are currently checking? 
+      listOfCategories.push(currentProductItemWeChecking.category)//if it does, we don't need to add it again, so we just return the list of categories as is. if it doesn't, we add it to the list of categories,...
+    }
+    return listOfCategories;//and return the updated list of categories to the next iteration of the reduce function.
+  }, ['all']);//we start with an array that contains the string 'all' because we want to have a button that shows all products, regardless of category.
+  // console.log(categories)
 
-  /* -------------------------------------------------------------------------
-   * STEP 3 — TURN EVERY PRODUCT INTO HTML TEXT
-   * ---------------------------------------------------------------------
-   * forEach loops over the array. For each product, we glue a chunk of
-   * HTML onto the `html` string. Nothing is on the page yet — `html` is
-   * just one long piece of text being built up, one product at a time.
-   *
-   * Notice `data-index="${index}"` on the button — that's how we'll know
-   * WHICH product was clicked, later in step 5.
-   * ---------------------------------------------------------------------- */
-  let html = '';
+//so the first part of this function is to create a list of unique categories from the products array, and then we can use that list to create buttons for each category.
 
-  products.forEach((product, index) => {
-    html += `
-      <div class="product-card">
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p class="price">$${product.price}</p>
-        <button data-index="${index}">Add to Cart</button>
-      </div>
-    `;
+  let dynamicBtns = categories.map((currentCategory) => {
+    return `<button type="button" class="filter-btn" data-id=${currentCategory}>${currentCategory}</button>`
+  }).join('')//we use the map function to create a new array of button elements, one for each category. we use the join function to convert that array into a string of HTML that we can insert into the DOM.
+  containerBtn.innerHTML = dynamicBtns;
+  // console.log(dynamicBtns)
+  
+  //so the second part of this function is to create the buttons for each category and insert them into the DOM. we use the innerHTML property of the containerBtn element to do that.
+  
+const btnn = document.querySelectorAll('.filter-btn')
+
+btnn.forEach((item) => {
+  console.log(item)
+  item.addEventListener('click' , (event) => {
+    const btnnSection = event.currentTarget.dataset.id;
+    let filteredProducts = products.filter((filteredItems) =>{
+      return filteredItems.category === btnnSection
+      // if (filteredItems.category === btnnSection) {
+      //          return filteredItems.category
+      // }
+    })
+
+    console.log(filteredProducts)
+        if (btnnSection === 'all') {
+          displayProductItems(products)
+        } else {
+          displayProductItems(filteredProducts)
+
+           console.log(sectionMenu.innerHTML)
+        }
   });
-
-
-  /* -------------------------------------------------------------------------
-   * STEP 4 — PUT THE HTML ON THE PAGE
-   * ---------------------------------------------------------------------
-   * This is the moment everything actually appears. We set innerHTML ONCE,
-   * after the loop is finished building the full string — not on every
-   * pass through the loop.
-   * ---------------------------------------------------------------------- */
-  productList.innerHTML = html;
-
-
-  /* -------------------------------------------------------------------------
-   * STEP 5 — MAKE "ADD TO CART" WORK
-   * ---------------------------------------------------------------------
-   * Tricky part: the buttons we just created didn't exist a moment ago, so
-   * we can't attach a click listener to each one directly while building
-   * the HTML string. Instead, we put ONE listener on the whole shelf, and
-   * ask "was the thing that got clicked a button?" This trick is called
-   * EVENT DELEGATION — common whenever your HTML comes from innerHTML.
-   * ---------------------------------------------------------------------- */
-  let cartCount = 0;
-  const cartCountEl = document.querySelector('#cart-count');
-  const cartItemsEl = document.querySelector('#cart-items');
-
-  productList.addEventListener('click', (event) => {
-    // Only react if the click landed on a <button>
-    if (event.target.tagName !== 'BUTTON') return;
-
-    // Read back which product this button belongs to
-    const index = event.target.dataset.index;
-    console.log(`Button clicked for product index ${index}`);
-    const product = products[index];
-    console.log(product)
-
-
-    cartCount++;
-    cartCountEl.textContent = cartCount;
-
-    // Build a cart card using the SAME "product-card" design as the shelf
-    // above — just swap the button for a little "added" badge instead.
-    cartItemsEl.innerHTML += `
-      <div class="product-card">
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p class="price">$${product.price}</p>
-        <span class="added-badge">Added To Cart</span>
-      </div>
-    `;
- 
-
-    console.log(`Added to cart: ${product.name} ($${product.price})`);
-  });
-
+});
 }
 
 
-/* ---------------------------------------------------------------------------
- * RUN IT
- * ------------------------------------------------------------------------ */
-renderShop();
+
+function displayProductItems(ProductItems) {
+  const displayitems = ProductItems.map((items) => {
+    // console.log(items);
+    return `<article class="menu-item">
+            <img src=${items.icon} alt="menu item" class="photo" />
+            <div class="item-info">
+              <header>
+                <h4>${items.title}</h4>
+                <h4 class="price">$${items.price}</h4>
+              </header>
+              <p class="item-text">
+              ${items.desc}
+              </p>
+            </div>
+          </article>`;
+  });
+
+  sectionMenu.innerHTML = displayitems.join('  ');
+}
 
 
-/* ---------------------------------------------------------------------------
- * CHECK FOR UNDERSTANDING
- *   Q1. Walk through renderShop() step by step out loud, in order. What
- *       happens first? What has to happen before the page shows anything?
- *   Q2. Why do we build up one `html` string in the loop and set
- *       innerHTML ONCE after, instead of setting it inside the loop?
- *   Q3. Why can't we attach a click listener to each button individually,
- *       the way we would with createElement?
- *   Q4. Add a 6th product to the `products` array. Do you need to touch
- *       any other code for it to show up? Why not?
- *   Q5. What does `event.target` refer to inside the click listener?
- *       Log it to the console and click around to find out.
- * ------------------------------------------------------------------------ */
+
+// const btn = document.querySelectorAll('.filter-btn')
+
+// btn.forEach((item) => {
+//   // console.log(item)
+//   item.addEventListener('click', (event) => {
+//     // console.log(event.currentTarget.dataset.id)
+//     const btnSection = event.currentTarget.dataset.id;
+//     let filteredMenu = menuu.filter((filteredItems) => {
+//       // console.log(filteredItems.category)
+
+//       if (filteredItems.category === btnSection) {
+//         return filteredItems.category
+//       }
+//     })
+
+//     console.log(filteredMenu)
+//     if (btnSection === 'all') {
+//       displayMenuItems(menuu)
+//     } else {
+//       displayMenuItems(filteredMenu)
+
+//       // console.log(sectionMenu.innerHTML)
+//     }
+
+//   })

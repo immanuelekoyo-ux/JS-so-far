@@ -82,16 +82,8 @@ function lesson_reduceBuildsThings() {
 
   const votes = ['dog', 'cat', 'dog', 'dog', 'cat', 'fish'];
 
-  // Start with an empty object. For each vote, add 1 to that animal's count.
   const tally = votes.reduce((counts, vote) => {
-    console.log(counts, vote);
-    // console.log(counts[vote] = (counts[vote] || 0) + 1);
-    
-    // `counts` is the tally object, and `vote` is the current animal name.
-    // Bracket notation uses the value of `vote` as the property name:
-    // counts['dog'] means the same thing as counts.dog.
-    // Read the old count, use 0 if it does not exist, then add one.
-    counts[vote] = (counts[vote] || 0) + 1;
+    counts[vote] = (counts[vote] || 0) + 1; // "have I seen this before?"
     return counts;
   }, {}); // <- starting value is an EMPTY OBJECT this time, not 0
 
@@ -112,9 +104,9 @@ function lesson_reduceBuildsThings() {
 /* ---------------------------------------------------------------------------
  * RUNNER
  * ------------------------------------------------------------------------ */
-// lesson_reduceBasics();
-// lesson_stepByStep();
-// lesson_startingValueMatters();
+lesson_reduceBasics();
+lesson_stepByStep();
+lesson_startingValueMatters();
 lesson_reduceBuildsThings();
 
 /* ---------------------------------------------------------------------------

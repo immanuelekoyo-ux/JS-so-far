@@ -3,110 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchPad Marketing</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
 </head>
 <body>
-    <header class="site-header" id="home">
-        <div class="container header-inner">
-            <a class="brand" href="#home">LaunchPad</a>
-            <nav class="site-nav">
-                <a href="#features">Features</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-        <section class="hero">
-            <div class="hero-copy">
-                <p class="eyebrow">Marketing platform for modern teams</p>
-                <h1>Build campaigns that convert.</h1>
-                <p class="hero-description">LaunchPad helps teams capture more leads, create compelling launches, and turn visitors into loyal customers.</p>
-                <a class="cta-button" href="#contact">Get Started</a>
-            </div>
-            <div class="hero-panel">
-                <div class="stats">
-                    <div>
-                        <strong>24/7</strong>
-                        <span>Campaign automation</span>
-                    </div>
-                    <div>
-                        <strong>+32%</strong>
-                        <span>Lead growth in 30 days</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </header>
-    <main>
-        <section class="section" id="features">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label">Features</span>
-                    <h2>Everything you need to launch, promote, and convert.</h2>
-                </div>
-                <div class="feature-grid">
-                    <article class="feature-card">
-                        <h3>Landing Pages</h3>
-                        <p>Create targeted landing pages that turn curiosity into action.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3>Email Funnels</h3>
-                        <p>Automate follow-ups and nurture leads with modern campaigns.</p>
-                    </article>
-                    <article class="feature-card">
-                        <h3>Analytics</h3>
-                        <p>Measure performance with easy-to-understand conversion insights.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section class="section section-highlight">
-            <div class="container highlight-card">
-                <div>
-                    <span class="section-label">Why us</span>
-                    <h2>Launch faster with a platform built for growth.</h2>
-                    <p>From campaign planning to execution, LaunchPad keeps your whole team aligned and driving revenue.</p>
-                </div>
-                <div class="highlight-points">
-                    <div>
-                        <strong>Simple setup</strong>
-                        <p>Go live in minutes with polished templates and guided workflows.</p>
-                    </div>
-                    <div>
-                        <strong>Powerful insights</strong>
-                        <p>Know what works with real-time visitor and conversion data.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section contact-section" id="contact">
-            <div class="container contact-grid">
-                <div class="contact-copy">
-                    <span class="section-label">Contact</span>
-                    <h2>Ready to grow your next launch?</h2>
-                    <p>Send us a message and our team will help you get started with the right strategy.</p>
-                </div>
-                <form class="contact-form">
-                    <label>
-                        <span>Name</span>
-                        <input type="text" placeholder="Your name" required>
-                    </label>
-                    <label>
-                        <span>Email</span>
-                        <input type="email" placeholder="you@example.com" required>
-                    </label>
-                    <label>
-                        <span>Message</span>
-                        <textarea rows="4" placeholder="How can we help?" required></textarea>
-                    </label>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>© 2026 LaunchPad. All rights reserved.</p>
-        </div>
-    </footer>
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>Dropdown Nav</title>
+        <link rel="stylesheet" href="output.css">
+    </head>
+    
+    <body class="bg-gray-100">
+    
+        <nav>
+            <ul class="flex gap-6 items-center">
+                <li><a href="">Home</a></li>
+        
+                <!-- MEN DROPDOWN -->
+                <li class="relative group">
+                    <a href="" class="flex items-center gap-1">
+                        Men
+                        <i
+                            class="fa-solid fa-chevron-down text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                    </a>
+        
+                    <ul
+                        class="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 rounded-lg w-48 p-3 shadow-xl space-y-1">
+        
+                        <li>
+                            <a href="" class="block px-4 py-3 rounded-md bg-red-500 text-white">
+                                Men Item 1
+                            </a>
+                        </li>
+        
+                        <li>
+                            <a href="" class="block px-4 py-3 rounded-md hover:bg-red-500 hover:text-white transition">
+                                Men Item 2
+                            </a>
+                        </li>
+        
+                        <li>
+                            <a href="" class="block px-4 py-3 rounded-md hover:bg-red-500 hover:text-white transition">
+                                Men Item 3
+                            </a>
+                        </li>
+        
+                    </ul>
+                </li>
+        
+                <li><a href="">Women</a></li>
+                <li><a href="">Shop</a></li>
+                <li><a href="">Product</a></li>
+                <li><a href="">404 page</a></li>
+                <li><a href="">Checkout</a></li>
+            </ul>
+        </nav>
+    
+    </body>
+    
+    </html>
 </body>
 </html>

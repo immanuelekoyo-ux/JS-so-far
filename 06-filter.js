@@ -93,7 +93,7 @@ function lesson_needsBoolean() {
  * ------------------------------------------------------------------------ */
 // lesson_filterBasics();
 // lesson_mapVsFilter();
-lesson_filterObjects();
+// lesson_filterObjects();
 // lesson_needsBoolean();
 
 /* ---------------------------------------------------------------------------
@@ -105,93 +105,10 @@ lesson_filterObjects();
  * ------------------------------------------------------------------------ */
 
 
-/* ============================================================================
- * CLASSWORK — filter()
- * ----------------------------------------------------------------------------
- * Write your answer under each task. Use filter() for every task.
- * Save each result in a new variable and console.log() it.
- * ==========================================================================*/
+//CLASSWORK
+//passing score
+//from the score array, filter out the score above 50
+const score = [45, 12, 67, 90, 38, 75, 50, 100, 40, 73];
 
-const scores = [45, 82, 67, 90, 38, 75, 100, 52];
-
-const fruits = ['apple', 'kiwi', 'banana', 'fig', 'mango', 'pear', 'watermelon'];
-
-const students = [
-  { name: 'Ada',    age: 15, passed: true  },
-  { name: 'Tunde',  age: 17, passed: false },
-  { name: 'Chioma', age: 16, passed: true  },
-  { name: 'Musa',   age: 18, passed: true  },
-  { name: 'Kemi',   age: 14, passed: false },
-];
-
-
-/* ---------------------------------------------------------------------------
- * TASK 1: Passing scores
- *   From `scores`, get only the scores that are 50 or above.
- *
- *   HINT: Look back at the `ages` example in section 1.
- *         Which comparison operator means "50 or above"?
- * ------------------------------------------------------------------------ */
-
-// your code here
-
-
-/* ---------------------------------------------------------------------------
- * TASK 2: Failing scores
- *   From `scores`, get only the scores that are BELOW 50.
- *
- *   HINT: This is almost the same as Task 1. Just flip the test.
- * ------------------------------------------------------------------------ */
-
-// your code here
-
-
-/* ---------------------------------------------------------------------------
- * TASK 3: Short fruit names
- *   From `fruits`, get only the fruits whose name has 4 letters or fewer.
- *
- *   HINT: Every string has a `.length`. See section 4.
- * ------------------------------------------------------------------------ */
-
-// your code here
-
-
-/* ---------------------------------------------------------------------------
- * TASK 4: Students who passed
- *   From `students`, get only the students where `passed` is true.
- *
- *   HINT: `passed` is already true or false.
- *         Do you even need a comparison here?
- * ------------------------------------------------------------------------ */
-
-// your code here
-
-
-/* ---------------------------------------------------------------------------
- * TASK 5: Two conditions
- *   From `students`, get only the students who passed AND are 16 or older.
- *
- *   HINT: Look at section 3. How did we check TWO things at once?
- * ------------------------------------------------------------------------ */
-
-// your code here
-
-
-/* ---------------------------------------------------------------------------
- * BONUS: filter + map
- *   From `students`, get the NAMES of the students who did NOT pass.
- *   Your result should be an array of strings, not objects.
- *
- *   HINT: First filter, then map. See section 2.
- *         `!` means "not".
- * ------------------------------------------------------------------------ */
-
-// your code here
-
-
-/* ---------------------------------------------------------------------------
- * FINAL CHECK
- *   After all your tasks, console.log(scores), console.log(fruits) and
- *   console.log(students). Did any of the original arrays change? Why?
- * ------------------------------------------------------------------------ */
-
+const scoreAbove = score.filter((s) => s >= 50);
+console.log(scoreAbove);
