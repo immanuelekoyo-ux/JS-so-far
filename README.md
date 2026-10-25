@@ -1,2 +1,2 @@
-# JS-so-far
-What I've learnt on JS so far
+# WD-so-far
+What I've learnt on WD so far
